@@ -60,7 +60,6 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-<<<<<<< HEAD
         int p0, p1 ;
         p0 = 0;
         p1 = INT_MIN;
@@ -70,8 +69,6 @@ public:
         }
 
         return p0;
-=======
->>>>>>> 19fb63227d364f81da1217cff8cefd79bb6634c3
 
     }
 };
