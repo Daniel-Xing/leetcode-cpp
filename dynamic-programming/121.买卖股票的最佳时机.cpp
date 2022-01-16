@@ -6,10 +6,17 @@
  * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/description/
  *
  * algorithms
+<<<<<<< HEAD
  * Easy (57.40%)
  * Likes:    2054
  * Dislikes: 0
  * Total Accepted:    644.7K
+=======
+ * Easy (57.25%)
+ * Likes:    2046
+ * Dislikes: 0
+ * Total Accepted:    642.2K
+>>>>>>> 19fb63227d364f81da1217cff8cefd79bb6634c3
  * Total Submissions: 1.1M
  * Testcase Example:  '[7,1,5,3,6,4]'
  *
@@ -53,6 +60,7 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
+<<<<<<< HEAD
         int p0, p1 ;
         p0 = 0;
         p1 = INT_MIN;
@@ -62,6 +70,8 @@ public:
         }
 
         return p0;
+=======
+>>>>>>> 19fb63227d364f81da1217cff8cefd79bb6634c3
 
     }
 };
