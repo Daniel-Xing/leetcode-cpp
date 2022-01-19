@@ -54,7 +54,21 @@
 class Solution {
 public:
     int jump(vector<int>& nums) {
+        int right_index = nums[0];
+        int new_right = right_index;
+        int n = nums.size();
+        int step = 0;
 
+        for (int i = 1; i < n ; i++) {
+            for (int j = i; j < n && j <= right_index; j++) {
+                if(j + nums[j] > new_right) new_right = j + nums[j];
+            }
+            i = right_index;
+            right_index = new_right;
+            step ++;
+        }
+
+        return step;
     }
 };
 // @lc code=end
