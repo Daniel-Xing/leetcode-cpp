@@ -60,8 +60,15 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
+        int max_sub = nums[0];
+        int current = 0;
+        for(int i = 0; i < nums.size(); i ++) {
+            current = max(nums[i] + current, nums[i]);
+            if (current > max_sub) max_sub = current;
+        }
 
-    }
+        return max_sub;
+    } 
 };
 // @lc code=end
 
