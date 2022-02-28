@@ -52,25 +52,16 @@
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
-        int right_index = nums[0];
-        int new_right = right_index;
-        int n = nums.size();
+        if (nums.size() == 1) return true;
 
-        if (right_index >= n) return true;
+        int max_len = 0;
+        for(int i = 0; i <= max_len; i++) {
+            if(i + nums[i] > max_len) max_len = i + nums[i];
 
-        for (int i = 1; i < n ; i++) {
-            for (int j = i; j < n && j <= right_index; j++) {
-                if(j + nums[j] > new_right) new_right = j + nums[j];
-            }
-
-            if (new_right >= n -1) return true;
-            if(new_right == right_index && new_right != n-1) return false;
-
-            i = right_index;
-            right_index = new_right;
+            if(max_len >= nums.size() -1) return true; 
         }
 
-        return true;
+        return false;
     }
 };
 // @lc code=end
