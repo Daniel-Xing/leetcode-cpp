@@ -49,15 +49,22 @@
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
-        vector<vector<int>> ret(numRows);
-        for (int i = 0; i < numRows; ++i) {
-            ret[i].resize(i + 1);
-            ret[i][0] = ret[i][i] = 1;
-            for (int j = 1; j < i; ++j) {
-                ret[i][j] = ret[i - 1][j] + ret[i - 1][j - 1];
+        vector<vector<int>> ans(0);
+        for(int i = 1; i <= numRows; i++) {
+            vector<int> temp(0);
+            for(int j = 0; j < i; j ++) {
+                if(j == 0) temp.push_back(1);
+                else if (j == i -1) temp.push_back(1);
+                else {
+                    // std::cout << i << std::endl;
+                    temp.push_back(ans.back()[j-1] + ans.back()[j]);
+                }
             }
+
+            ans.push_back(temp);
         }
-        return ret;
+
+        return ans;
     }
 };
 // @lc code=end
