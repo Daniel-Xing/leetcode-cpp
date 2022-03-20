@@ -55,25 +55,40 @@
 // @lc code=start
 class Solution {
 public:
-    int mySqrt(int x) {
-        if(x == 0 || x == 1) return x;
+    int getKElement(vector<int>& nums1, vector<int>& nums2, int k) {
+        int index1 = 0, index2 = 0;
+        int m = nums1.size(), n = nums2.size();
 
-        int left = 1, right = x/2;
-        int ans = left;
-        long mid;
-        while (left <= right) {
-            mid = (left + right) /2;
-            if(mid*mid == x) {
-                return mid;
-            }else if(mid*mid < x) {
-                left = mid + 1;
-                ans = mid;
+        while(1) {
+            if(index1 == m ) {
+                return nums2[index2 + k -1];
+            }
+            if(index2 == n ) {
+                return nums1[index1 + k -1];
+            }
+            if(k == 1) {
+                return min(nums1[index1], nums2[index2]);
+            }
+
+            int newIndex1 = min(index1 + k/2 -1, m -1);
+            int newIndex2 = min(index2 + k/2 -1, n -1);
+            if(nums1[newIndex1] <= nums2[newIndex2]) {
+                k -= newIndex1 - index1 + 1;
+                index1 = newIndex1 + 1;
             }else {
-                right = mid - 1;
+                k -= newIndex2 - index2 + 1;
+                index2 = newIndex2 + 1;
             }
         }
+    }
 
-        return ans;
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int m = nums1.size(), n = nums2.size();
+        if((m + n) % 2 == 0) {
+            return (getKElement(nums1, nums2, (m + n)/2) + getKElement(nums1, nums2, (m + n)/2 + 1)) / 2.0;
+        } else {
+            return getKElement(nums1, nums2, (m + n + 1)/2);
+        }
     }
 };
 // @lc code=end
