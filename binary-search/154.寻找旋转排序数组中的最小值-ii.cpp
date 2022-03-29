@@ -63,8 +63,32 @@
 // @lc code=start
 class Solution {
 public:
-    int findMin(vector<int>& nums) {
+    int res;
 
+    void dfs(vector<int>& nums, int left, int right) {
+        if(left > right) return;
+
+        int mid = (left + right) /2;
+        int min_value = min(nums[mid], min(nums[left], nums[right]));
+        if(min_value < res) res = min_value;
+
+        if(nums[mid] > nums[left]) {
+            dfs(nums, mid + 1, right);
+        }
+
+        if(nums[mid] < nums[right]) {
+            dfs(nums, left, mid -1);
+        }
+
+        dfs(nums, left, mid -1);
+        dfs(nums, mid + 1, right);
+    }
+
+    int findMin(vector<int>& nums) {
+        res = INT_MAX;
+        dfs(nums, 0, nums.size() -1);
+
+        return res;
     }
 };
 // @lc code=end
